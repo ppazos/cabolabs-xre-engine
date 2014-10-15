@@ -1,0 +1,130 @@
+﻿<!-- regla con acciones que devuelven valores -->
+<!-- XML Rule xrl -->
+<xrl:rule xmlns:xrl="http://cabolabs.com/xre">
+  <header>
+    <id>rule_date_diff.v1</id>
+    <name>regla de prueba para calculos de diferencias entre fechas</name>
+    <description />
+    <keywords />
+  </header>
+  
+  <declarations>
+  
+    <!-- Variables = Se deben resolver con resolutions -->
+    <var name="last_pap_test_date" type="date" />
+    <var name="days_from_last_pap" type="int32" />
+    
+    <var name="an_integer" type="int32" />
+    <var name="a_date" type="date" />
+    
+    <var name="diff_days" type="int32" />
+    <var name="diff_hours" type="int32" />
+    <var name="diff_minutes" type="int32" />
+    
+    <!-- Constantes = Declaracions con valor -->
+    <var name="ret_warning" value="warning" type="string" />
+    <var name="ret_ok" value="ok" type="string" />
+    
+  </declarations>
+  
+  <input>
+    <!--
+    <param name="patient_id" type="string" />
+    <param name="medication_drug" type="string" />
+    -->
+  </input>
+  
+  <resolutions>
+    <!-- Los params vienen en el init de la regla y es distinto a los valores de input -->
+    <!-- Cuidado: en este caso params es una lista porque tiene solo los nombres
+         de los params que luego van a venir en el init
+    -->
+    <!--
+    <http var="last_pap_test_date" params="['patient_id']">
+      <locator url="http://localhost/gine_tests.xml" />
+      <extractor path="tests.test.time" />
+      <aggregator type="last" />
+    </http>
+    -->
+    
+    <!-- Esta resolution no usa params del init, los params son: una variable
+         resuelta previamente, una variable predefinida y un valor seteado en
+         esta misma regla.
+         Cuidado: depende en la resolucion de una variable declarada, entonces
+         las resoluciones NO pueden hacerse en paralelo. En futuras versiones
+         se puede implementar un analizador de dependencias para detectar cuales
+         resoluciones pueden hacerse en paralelo y cuales no. 
+    -->
+    
+    <function var="last_pap_test_date">
+      <parseDate params="['1981-10-24T09:59:00-0300']" />
+    </function>
+
+    <function var="days_from_last_pap">
+      <!-- units: years, months, days, hours, minutes, seconds -->
+      <!-- $now is a variable assigned automatically to the current date -->
+      <dateDiff params="['last_pap_test_date', '$now', 'days']" />
+    </function>
+
+    <function var="a_date">
+      <parseDate params="['2013-02-20T00:00:00-0300']" />
+    </function>
+    
+    <function var="an_integer">
+      <dateDiff params="['last_pap_test_date', 'a_date', 'years']" />
+    </function>
+    
+    <!-- Pruebas diferencias de fechas con variables constantes -->
+    <function var="diff_days">
+      <dateDiff params="['$today', '$tomorrow', 'days']" />
+    </function>
+    <function var="diff_hours">
+      <dateDiff params="['$today', '$tomorrow', 'hours']" />
+    </function>
+    <function var="diff_minutes">
+      <dateDiff params="['$today', '$tomorrow', 'minutes']" />
+    </function>
+  </resolutions>
+  
+  <logic>
+    <if>
+      <!-- <true /> -->
+      <!--
+      http://groovy.329449.n5.nabble.com/parsing-strings-into-maps-td353915.html
+      Convertir parms a Map o List: def mymap = new GroovyShell().evaluate("[key1:value1,key2:value2]")
+      De esta forma puedo hacer que las tags sean independientes del parser: no hay atributos especificos por tag,
+      los params van todos en el map y listo. LOS PARAMS DEBEN SER PUESTOS CON LOS NOMBRES QUE ESPERA LA FUNCION.
+      -->
+      <!-- <gt in1="days_from_last_pap" inc2="365" /> -->
+      <gt params="['days_from_last_pap', 365]" />
+      <do>
+        <print params="['last_pap_test_date']" />
+        <print params="['days_from_last_pap']" />
+        
+        <print params="['diff_days']" />
+        <print params="['diff_hours']" />
+        <print params="['diff_minutes']" />
+        
+        <dateDiff params="['$tomorrow', '$yesterday', 'days']" return="diff_days" />
+        <dateDiff params="['$tomorrow', '$yesterday', 'hours']" return="diff_hours" />
+        <dateDiff params="['$tomorrow', '$yesterday', 'minutes']" return="diff_minutes" />
+        
+        <print params="['diff_days']" />
+        <print params="['diff_hours']" />
+        <print params="['diff_minutes']" />
+        
+        <sum return="prueba_suma" type="float32" params="[3.1416, 1.21]" />
+        
+        <return name="prueba_suma" />
+        <return name="last_pap_test_date" />
+        <return name="days_from_last_pap" />
+        <return name="ret_warning" />
+      </do>
+    </if>
+    <else>
+      <do>
+        <return name="ret_ok" />
+      </do>
+    </else>
+  </logic>
+</xrl:rule>

@@ -1,0 +1,84 @@
+﻿<!-- regla con acciones que devuelven valores -->
+<!-- XML Rule xrl -->
+<xrl:rule xmlns:xrl="http://cabolabs.com/xre">
+  <header>
+    <id>simple_if.v1</id>
+    <name>regla de prueba para probar el parseo de logica simple, sin resolutions</name>
+    <description />
+    <keywords />
+  </header>
+  
+  <declarations>
+
+    <!-- Constantes = Declaracions con valor -->
+    <var name="ret_warning" value="warning" type="string" />
+    <var name="ret_ok" value="ok" type="string" />
+    <var name="valor1" type="int32" value="666" />
+    
+  </declarations>
+  
+  <input />
+  
+  <resolutions />
+  
+  <logic>
+    <if>
+      <gt params="[667, 'valor1']" />
+      <do>
+        <print params="['hola mundo!']" />
+        
+        <!-- 
+         http://groovy.codehaus.org/Groovy+Math
+         Los numeros con coma son parseados como BigDecimal,
+         si se quieren floats deben tener un sifujo apropiado:
+          - G: BigDecimal      ej. 3.1416G
+          - D: Double (64bits) ej. 3.1416D
+          - F: Float  (32bits) ej. 3.1416F
+          
+         TODO: Si el tipo esta marcado como float, deberia
+               asumir que los parametros son float y castearlos
+         TODO: Habria que hacer una clase que permita verificar reglas, tal vez dentro de la misma funcion.
+        -->
+        <sum return="prueba_suma" type="float32" params="[3.1416F, 1.21F]" />
+        
+        <!--
+         valor1 es integer, 3.1416 se parsea a BigDecimal y el returnType no esta especificado
+         => deberia castear el integer a BigDecimal y que el returnType sea BigDecimal
+         
+         Reglas de casteo de parametros para que sean del mismo tipo (depende de la semantica de la funcion)
+          - sum Integer BigDecimal => BigDecimal BigDecimal
+          - sum Long BigDecimal    => BigDecimal BigDecimal
+          - sum Float BigDecimal   => BigDecimal BigDecimal
+          - sum Double BigDecimal  => BigDecimal BigDecimal
+          - sum Integer Double     => Double Double
+          - sum Long Double        => Double Double // se pierde presicion para Longs grandes
+          - sum Float Double       => Double Double
+          - sum Integer Float      => Float Float
+          - sum Long Float         => Float Float // se pierde presicion para Longs grandes, incluso mas que para Double porque Float tiene la mitad de bits
+          - sum Integer Long       => Long Long
+          
+         Operaciones entre Integer y Long en Groovy: para castear resultType
+          - Integer + Long => Long
+          - Integer - Long => Long
+          - Integer * Long => Long
+          - Integer / Long => BigDecimal
+          
+         Operaciones entre BigDecimal e Integer en Groovy: para castear resultType
+          - BigDecimal + Integer => BigDecimal
+          - BigDecimal - Integer => BigDecimal
+          - BigDecimal * Integer => BigDecimal
+          - BigDecimal / Integer => BigDecimal
+        -->
+        <sum return="prueba_otra_suma" params="[3.1416, 'valor1']" />
+        
+        <return name="prueba_suma" />
+        <return name="prueba_otra_suma" />
+      </do>
+    </if>
+    <else>
+      <do>
+        <return name="valor1" />
+      </do>
+    </else>
+  </logic>
+</xrl:rule>

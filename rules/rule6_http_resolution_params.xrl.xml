@@ -1,0 +1,85 @@
+﻿<!-- regla con acciones que devuelven valores -->
+<!-- XML Rule xrl -->
+<xrl:rule xmlns:xrl="http://cabolabs.com/xre">
+  <header>
+    <id>rule_date_diff.v1</id>
+    <name>regla de prueba para calculos de diferencias entre fechas</name>
+    <description />
+    <keywords />
+  </header>
+  
+  <declarations>
+  
+    <!--
+    FIXME: aunque sea constante, su valor se pone en el contexto de
+    ejecucion al hacer el init.
+    
+    Si se declara var_patient_id luego de a_date va a dar un error de
+    que falta el valor, porque a_date necesita var_patient_id.
+    
+    Sucede que las resoluciones de variables van en el orden de declaracion
+    entonces a_date se intenta resolver antes de poner el valor constante
+    en la ejecucion.
+    
+    Esto se podria resolver poniendo primero todos los valores constantes
+    en memoria cuando se llama a init, o incluso cuando se hace el add.
+    -->
+    <!-- Param de http resolution -->
+    <var name="var_patient_id" type="string" value="abc123" />
+  
+    <!-- Variables = Se deben resolver con resolutions -->
+    <var name="a_date" type="date" />
+    
+    <!-- Constantes = Declaracions con valor -->
+    <var name="ret_warning" value="warning" type="string" />
+    <var name="ret_ok" value="ok" type="string" />
+    
+  </declarations>
+  
+  <input>
+    <!--
+    <param name="patient_id" type="string" />
+    <param name="medication_drug" type="string" />
+    -->
+  </input>
+  
+  <!--
+    Las Http Reoslutions deben soportar pasar como parametro:
+     - Instancias (previamente declaradas, referenciadas por su nombre)
+     - Constantes (valor y tipo declarado en la misma resolutions)
+     - Variables Predefinidas (referenciadas por su nombre $xxxx)
+  -->
+  
+  <resolutions>
+    <!-- Los params vienen en el init de la regla y es distinto a los valores de input -->
+    <!-- Cuidado: en este caso params es una lista porque tiene solo los nombres
+         de los params que luego van a venir en el init
+    -->
+    
+    <!-- http://localhost/YuppPHPFramework/xre-client/tests/getPatient?patient_id=abc123 -->
+    <!--
+      patient_id es el nombre del param para el request,
+      var_patient_id es el valor que va a tener, y es una variable declarada previamente
+    -->
+    <http var="a_date" params="['patient_id':'var_patient_id', 'to_date':'$tomorrow', 'cte':12345]">
+      <locator url="http://localhost/YuppPHPFramework/xre-client/tests/getPatient" />
+      <extractor path="birthdate" />
+    </http>
+    
+  </resolutions>
+  
+  <logic>
+    <if>
+      <gt params="[666, 365]" />
+      <do>
+        <print params="['a_date']" />
+        <return name="ret_warning" />
+      </do>
+    </if>
+    <else>
+      <do>
+        <return name="ret_ok" />
+      </do>
+    </else>
+  </logic>
+</xrl:rule>

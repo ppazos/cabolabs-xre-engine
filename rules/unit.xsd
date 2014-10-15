@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <!-- ========================== CONDITIONS ========================== -->
+    <!--
+    <and>
+       <or>
+          <eq in1="par2" inc2="una_constante" />
+          <gt in1="par1" in2="par2" />
+       </or>
+       <gt in1="var1" in2="par1" />
+    </and>
+    -->
+    <xs:element name="eq">
+        <xs:complexType>
+            <xs:attribute name="in1" type="xs:string" use="required" />
+            <xs:attribute name="in2" type="xs:string"  use="optional" />
+            <xs:attribute name="inc1" type="xs:string" use="required" />
+            <xs:attribute name="inc2" type="xs:string"  use="optional" />
+            <!-- in1 xor inc1 and in2 xor inc2 -->
+            <xs:assert test="(@in1 and not(@inc1)) or (not(@in1) and @inc1)" />
+            <xs:assert test="(@in2 and not(@inc2)) or (not(@in2) and @inc2)" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="gt">
+        <xs:complexType>
+            <xs:attribute name="in1" type="xs:string" use="required" />
+            <xs:attribute name="in2" type="xs:string"  use="optional" />
+            <xs:attribute name="inc1" type="xs:string" use="required" />
+            <xs:attribute name="inc2" type="xs:string"  use="optional" />
+            <!-- in1 xor inc1 and in2 xor inc2 -->
+            <xs:assert test="(@in1 and not(@inc1)) or (not(@in1) and @inc1)" />
+            <xs:assert test="(@in2 and not(@inc2)) or (not(@in2) and @inc2)" />
+        </xs:complexType>
+    </xs:element>
+    
+    
+    <!-- =========================== ACCIONES ========================== -->
+    <!--
+    <do>
+       <action type="print" inc1="var_rnd es mayor que 400, es:" />
+       <action type="print" in1="var_rnd" />
+       
+       <action type="sum" in1="par1" in2="par2" return="sum1" />
+       <action type="print" in1="sum1" />
+       
+       <return name="sum1" />
+       <return name="par1" />
+    </do>
+    -->
+    <xs:element name="do">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="action" minOccurs="1" /> <!-- do debe tener 1 accion o mas -->
+                <xs:element ref="return" minOccurs="0" /> <!-- do puede no tener return -->
+            </xs:sequence> 
+        </xs:complexType>
+    </xs:element>
+    
+    
+    <xs:simpleType name="ActionTypeEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="sum"/>
+            <xs:enumeration value="print"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- <action type="sum" in1="par1" in2="par2" return="sum1" /> -->
+    <xs:element name="action">
+        <xs:complexType>
+            <xs:attribute name="type" type="ActionTypeEnum" use="required" />
+            <xs:attribute name="return" type="xs:string"  use="optional" />
+            <!-- otros atributos dependeran de la accion especifica -->
+        </xs:complexType>
+    </xs:element>
+    
+    <!-- <return name="sum1" /> -->
+    <xs:element name="return">
+        <xs:complexType>
+            <xs:attribute name="name" type="xs:string" use="required" />
+        </xs:complexType>
+    </xs:element>
+    
+</xs:schema>

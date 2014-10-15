@@ -1,0 +1,45 @@
+﻿<!-- regla con acciones que devuelven valores -->
+<!-- XML Rule xrl -->
+<xrl:rule xmlns:xrl="http://cabolabs.com/xre">
+  <header>
+    <id>simple_if.v1</id>
+    <name>regla de prueba para probar el parseo de logica simple, sin resolutions</name>
+    <description />
+    <keywords />
+  </header>
+  
+  <declarations>
+
+    <!-- Constantes = Declaracions con valor -->
+    <var name="ret_warning" value="warning" type="string" />
+    <var name="ret_ok" value="ok" type="string" />
+    <var name="valor1" type="int32" value="666" />
+    
+  </declarations>
+  
+  <input />
+  
+  <resolutions />
+  
+  <logic>
+    <if>
+      <and>
+        <gt params="[667, 'valor1']" />
+        <gt params="[3, 4]" />
+      </and>
+      <do>
+        <print params="['hola mundo!']" />
+        <sum return="prueba_suma" type="float32" params="[3.1416F, 1.21F]" />
+        <sum return="prueba_otra_suma" params="[3.1416, 'valor1']" />
+        
+        <return name="prueba_suma" />
+        <return name="prueba_otra_suma" />
+      </do>
+    </if>
+    <else>
+      <do>
+        <return name="valor1" />
+      </do>
+    </else>
+  </logic>
+</xrl:rule>

@@ -1,0 +1,58 @@
+﻿<!-- regla con acciones que devuelven valores -->
+<!-- XML Rule xrl -->
+<xrl:rule xmlns:xrl="http://cabolabs.com/xre">
+  <header>
+    <id>rule11_collection_intersect.v1</id>
+    <name>obtencion de valores desde un archivo xml en el filesystem local</name>
+    <description />
+    <keywords />
+  </header>
+  
+  <declarations>
+  
+    <!-- Constantes collection -->
+    <var name="codes_1" type="collection" value="['11111-1', '22222-2']" />
+    <var name="codes_2" type="collection" value="['10164-2', '10153-2']" />
+    
+    <var name="cda_component_codes" type="collection" />
+
+  </declarations>
+  
+  <input>
+
+  </input>
+  
+  <resolutions>
+  
+    <file var="cda_component_codes">
+      <locator path="rules/data_files" filename="sample_cda_document" extension="xml" />
+      <extractor path="component.structuredBody.component.section.code.@code" />
+      <!-- No necesita aggregator porque es unico -->
+    </file>
+    
+  </resolutions>
+  
+  <logic>
+    <if>
+      <gt params="[666, 555]" />
+      <do>
+        <print params="['cda_component_codes']" />
+        <print params="['codes_1']" />
+        <print params="['codes_2']" />
+        
+        <intersect params="['cda_component_codes', 'codes_1']" return="no_intersection" />
+        <intersect params="['cda_component_codes', 'codes_2']" return="is_intersection" />
+        
+        <print params="['Coleccion vacia:', 'no_intersection']" />
+        <print params="['Coleccion con elementos:', 'is_intersection']" />
+        
+        <!-- <return name="ret_warning" /> -->
+      </do>
+    </if>
+    <else>
+      <do>
+        <print params="['else']" />
+      </do>
+    </else>
+  </logic>
+</xrl:rule>

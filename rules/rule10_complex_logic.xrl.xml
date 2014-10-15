@@ -1,0 +1,61 @@
+﻿<!-- regla con acciones que devuelven valores -->
+<!-- XML Rule xrl -->
+<xrl:rule xmlns:xrl="http://cabolabs.com/xre">
+  <header>
+    <id>rule10_complex_logic.v1</id>
+    <name>prueba de funciones</name>
+    <description />
+    <keywords />
+  </header>
+  
+  <declarations>
+    <var name="a_string" type="string" value="hello" />
+  </declarations>
+  
+  <input>
+    <!--
+    <param name="patient_id" type="string" />
+    <param name="medication_drug" type="string" />
+    -->
+  </input>
+  
+  <resolutions>
+
+  </resolutions>
+  
+  <logic>
+    <if>
+      <and>
+        <startsWith params="['good morning', 'good']" />
+        <endsWith params="['good morning', 'morning']" />
+        <equals params="['a_string', 'hello']" /><!-- compara el valor de la variable a_string con la constante 'hello' -->
+      </and>
+      <do>
+        <!-- FIXME: esta regla no esta soportada aun porque el ActionBlock de un
+                    IfElse.ifBlock no soporta mezclar ActionBlocks con IfElse,
+                    debe cambiar el modelo un poco y corregir el parser. -->
+        <print params="['yes']" />
+        <div params="[3, 2]" return="one_and_a_half" />
+        <print params="['one_and_a_half']" />
+        <if>
+          <gt params="[2, 'one_and_a_half']" />
+          <do>
+            <print params="['2 gt one_and_a_half']" />
+            <return name="one_and_a_half" />
+          </do>
+        </if>
+        <else>
+          <do>
+            <print params="['2 lt one_and_a_half']" />
+          </do>
+        </else>
+      </do>
+    </if>
+    <else>
+      <do>
+        <print params="['no']" />
+      </do>
+    </else>
+    <return name="a_string" />
+  </logic>
+</xrl:rule>

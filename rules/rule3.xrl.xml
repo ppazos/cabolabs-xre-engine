@@ -1,0 +1,64 @@
+﻿<!-- regla con acciones que devuelven valores -->
+<!-- XML Rule xrl -->
+<xrl:unit xmlns:xrl="http://openehr.org.es/2012/rulens">
+  <header>
+    <id /><!-- incluye version -->
+	<name />
+	<description />
+	<kewords />
+	<author />
+	<contributors />
+	<changeLog>
+	  <createdOn />
+      <lastModification />
+	  <change date=""><!-- interesa quien hizo cada cambio o quien es el responsable -->
+	    <added a="b" />
+		<removed c="d" />
+	  </change>
+	</changeLog>
+  </header>
+  <rules>
+    <rule>
+	  <id />
+	  <name />
+	  <description />
+	  <keywords />
+	  <events>
+	    <!-- ante que eventos se debe ejecutar esta regla -->
+	  </events>
+	  <definitions>
+	  </definitions>
+	  <input>
+	    <param name="par1" type="number" />
+        <param name="par2" type="number" />
+      </input>
+	  <logic>
+	    <if><!-- primer if -->
+		  <eq inc1="a" inc2="b" />
+		  <do>
+		    <action type="print" inc1="accion print pepe"></action>
+		  </do>
+		</if>
+		<else><!-- cuando else contiene if, es lo mismo que logic -->
+		  <if><!-- segundo if -->
+		    <gt inc1="2" inc2="1" />
+		    <do>
+		      <action type="sum" in1="par1" in2="par2" return="sum1" />
+		      <action type="print" in1="sum1" />
+			  <action type="print" inc1="accion print hola mundo" />
+			</do>
+		  </if>
+		  <else>
+			<if><!-- tercer if -->
+			  <eq inc1="a" inc2="a" />
+			  <do>
+				<action type="print" inc1="accion print chau mundo" />
+			  </do>
+			</if>
+			<!-- podria ademas de hacer otro if llamar a varias actions en el else, por fuera del if -->
+		  </else>
+		</else>
+	  </logic>
+	</rule>
+  </rules>
+</xrl:unit>

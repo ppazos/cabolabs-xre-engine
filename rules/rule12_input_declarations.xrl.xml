@@ -1,0 +1,51 @@
+﻿<!-- regla con acciones que devuelven valores -->
+<!-- XML Rule xrl -->
+<xrl:rule xmlns:xrl="http://cabolabs.com/xre">
+  <header>
+    <id>rule12_input_declarations.v1</id>
+    <name>considera el valor de input en la logica</name>
+    <description />
+    <keywords />
+  </header>
+  
+  <declarations>
+    <var name="num1" type="int32" value="5" />
+    <var name="num2" type="int32" value="7" />
+  </declarations>
+  
+  <input>
+    <var name="command" type="string" />
+  </input>
+  
+  <resolutions>
+    
+  </resolutions>
+  
+  <logic>
+    <if>
+      <equals params="['command', 'sum']" />
+      <do>
+        <sum params="['num1', 'num2']" return="result" />
+        
+        <print params="['result']" />
+        
+        <return name="result" />
+      </do>
+    </if>
+    <!--
+     Podria poner un else y el if adentro, asi si cae en el primer
+     if no chequea el segundo, igual es para mostrar que puedo tener 2
+     if al mismo nivel.
+    -->
+    <if>
+      <equals params="['command', 'div']" />
+      <do>
+        <div params="['num1', 'num2']" return="result" />
+        
+        <print params="['result']" />
+        
+        <return name="result" />
+      </do>
+    </if>
+  </logic>
+</xrl:rule>

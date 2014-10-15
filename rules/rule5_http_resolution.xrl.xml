@@ -1,0 +1,69 @@
+﻿<!-- regla con acciones que devuelven valores -->
+<!-- XML Rule xrl -->
+<xrl:rule xmlns:xrl="http://cabolabs.com/xre">
+  <header>
+    <id>rule_date_diff.v1</id>
+    <name>regla de prueba para calculos de diferencias entre fechas</name>
+    <description />
+    <keywords />
+  </header>
+  
+  <declarations>
+  
+    <!-- Variables = Se deben resolver con resolutions -->
+    <var name="a_date" type="date" />
+    <var name="last_date" type="date" />
+    
+    <!-- Constantes = Declaracions con valor -->
+    <var name="ret_warning" value="warning" type="string" />
+    <var name="ret_ok" value="ok" type="string" />
+    
+  </declarations>
+  
+  <input>
+    <!--
+    <param name="patient_id" type="string" />
+    <param name="medication_drug" type="string" />
+    -->
+  </input>
+  
+  <resolutions>
+    <!-- Los params vienen en el init de la regla y es distinto a los valores de input -->
+    <!-- Cuidado: en este caso params es una lista porque tiene solo los nombres
+         de los params que luego van a venir en el init
+    -->
+    
+    <http var="a_date"> <!-- POR AHORA TEST SIN PARAMS params="['patient_id']"> -->
+      <locator url="http://localhost/gine_tests.xml" />
+      <extractor path="tests.test.time" />
+      <aggregator type="last" /><!-- <aggregator type="last" sort="asc" /> -->
+    </http>
+    
+    <!--
+      Como esta resolution es con el mismo locator y params (ninguno) que el anterior,
+      el valor es extraido del cache del request anterior en lugar de hacer un request nuevo.
+    -->
+    <http var="last_date"> <!-- POR AHORA TEST SIN PARAMS params="['patient_id']"> -->
+      <locator url="http://localhost/gine_tests.xml" />
+      <extractor path="tests.test.time" />
+      <aggregator type="last" sort="asc" />
+    </http>
+    
+  </resolutions>
+  
+  <logic>
+    <if>
+      <gt params="[666, 365]" />
+      <do>
+        <print params="['a_date']" />
+        <print params="['last_date']" />
+        <return name="ret_warning" />
+      </do>
+    </if>
+    <else>
+      <do>
+        <return name="ret_ok" />
+      </do>
+    </else>
+  </logic>
+</xrl:rule>

@@ -1,0 +1,65 @@
+<rules.Unit>
+  <rules class="linked-hash-map">
+    <entry>
+      <null/>
+      <rules.Rule>
+        <definitions class="linked-hash-map">
+          <entry>
+            <string>var1</string>
+            <rules.Variable>
+              <name>var1</name>
+              <type>STRING</type>
+              <locator>http://undominio.com/unServicioXML</locator>
+              <extractor>una_xpath</extractor>
+              <aggregator></aggregator>
+            </rules.Variable>
+          </entry>
+          <entry>
+            <string>var2</string>
+            <rules.Variable>
+              <name>var2</name>
+              <type>STRING</type>
+              <locator>http://undominio.com/unServicioXML</locator>
+              <extractor>una_xpath</extractor>
+              <aggregator>avg</aggregator>
+            </rules.Variable>
+          </entry>
+          <entry>
+            <string>var3</string>
+            <rules.Variable>
+              <name>var3</name>
+              <type>STRING</type>
+              <locator>http://undominio.com/unServicioXML</locator>
+              <extractor>una_xpath</extractor>
+              <aggregator></aggregator>
+            </rules.Variable>
+          </entry>
+        </definitions>
+        <input class="linked-hash-map">
+          <entry>
+            <string>par1</string>
+            <rules.Parameter>
+              <name>par1</name>
+              <type>NUMBER</type>
+            </rules.Parameter>
+          </entry>
+          <entry>
+            <string>par2</string>
+            <rules.Parameter>
+              <name>par2</name>
+              <type>NUMBER</type>
+            </rules.Parameter>
+          </entry>
+          <entry>
+            <string>par3</string>
+            <rules.Parameter>
+              <name>par3</name>
+              <type>NUMBER</type>
+            </rules.Parameter>
+          </entry>
+        </input>
+        <logic class="logic.IfElse"/>
+      </rules.Rule>
+    </entry>
+  </rules>
+</rules.Unit>

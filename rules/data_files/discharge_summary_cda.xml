@@ -1,0 +1,1987 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="CDA.xsl"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:hl7="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="schema/DischargeSummary-1_1_0.xsd  urn:hl7-org:v3 schema/hl7_v3/cda_v2/xsd/POCD_MT000040.xsd" >	
+   <typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
+
+<!-- sample Discharge Summary in CDA R2 -->
+
+             
+   <templateId root="2.16.840.1.113883.3.27.1776"/>
+   <code code="34105-7" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Hospital Discharge Summary"/>
+   <title>Good Health Hospital Discharge Summary</title>
+   <effectiveTime value="20060215"/>
+   <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+   <recordTarget>
+      <patientRole>
+         <id root="IHI Australia" extension="8003601153125336"/>
+         <patient>
+            <name>
+               <given>Henry</given>
+               <family>Levin</family>
+               <suffix>junior</suffix>
+            </name>
+            <administrativeGenderCode codeSystem="2.16.840.1.113883.5.1" code="M"/>
+            <birthTime value="192404030454+0100"/>
+         </patient>
+      </patientRole>
+   </recordTarget>
+    <!-- Discharge Summary Author -->
+    <author typeCode="AUT">
+        <time xmlns="urn:hl7-org:v3" value="200602121930+0200" />
+        <assignedAuthor xmlns="urn:hl7-org:v3">
+            <id extension="0751012312" root="" />
+            <addr nullFlavor="UNK" />
+            <telecom value="tel:0147150000" use="WP" />
+            <assignedPerson>
+                <name> 
+                    <prefix qualifier="AC">Dr</prefix>
+                    <given>Neil</given>
+                    <family>Rmo</family>
+                </name>
+            </assignedPerson>
+            <representedOrganization>
+                <id extension="1120456789" root="" />
+                <name nullFlavor="NAV" />
+                <telecom nullFlavor="UNK" />
+                <addr nullFlavor="UNK" />
+            </representedOrganization>
+        </assignedAuthor>
+    </author>  
+    <componentOf>
+			<encompassingEncounter>
+				<id extension="3120456789/457" root=""/>
+				<!--(CONF-HP-10) If present, requires effectiveTime to be precise to day at  ClinicalDocument/effectiveTime, author/time, dataEnterer/time, legalAuthenticator/time, authenticator/time and encompassingEncounter/effectiveTime  -->
+				<effectiveTime>
+					<low value="20060209"/>
+					<high value="20060218"/>
+				</effectiveTime>
+				<dischargeDispositionCode code="01" codeSystem="2.16.840.1.113883.12.112"
+					displayName="Routine Discharge" codeSystemName="HL7 Discharge Disposition"/>
+			</encompassingEncounter>
+    </componentOf>
+    <!-- Usual General Practioner -->
+    <informationRecipient >
+        <intendedRecipient >
+            <informationRecipient> 
+                <name> 
+                    <prefix qualifier="AC">Dr</prefix>
+                    <given>Patrick</given>
+                    <family>GeneralPractice</family>
+                </name>
+            </informationRecipient>       
+            <receivedOrganization>
+                <name>Good Health General Practice</name>
+                <telecom use="WP" value="tel:(08)8225 4579" />   
+                <telecom use="WP" value="fax:(08)8225 4580" />   
+                <addr use="WP">   
+                    <streetAddressLine>5 Good Health Street</streetAddressLine>
+                    <postalCode>5566</postalCode>
+                    <city>HAWTHORN</city> 
+                    <state>SA</state> 
+                    <country>AUSTRALIA</country>
+                </addr>
+            </receivedOrganization>        
+        </intendedRecipient>
+    </informationRecipient>
+    <informationRecipient >
+        <intendedRecipient >
+            <informationRecipient> 
+                <name> 
+                    <prefix qualifier="AC">Dr</prefix>
+                    <given>Ozie</given>
+                    <family>Specialist</family>
+                </name>
+            </informationRecipient>       
+        </intendedRecipient>
+	 </informationRecipient>
+    <informationRecipient >
+        <intendedRecipient >
+            <informationRecipient> 
+                <name> 
+                    <prefix qualifier="AC">Dr</prefix>
+                    <given>Neville</given>
+                    <family>Registrar</family>
+                </name>
+	          </informationRecipient>       
+	      </intendedRecipient>
+	 </informationRecipient>
+    
+	<!--added example text from here -->
+   <component>
+      <structuredBody>
+								<component typeCode="COMP" contextConductionInd="true">
+									<section classCode="DOCSECT" moodCode="EVN">
+										<code codeSystem="2.16.840.1.113883.2.1.3.2.4.15" code="163001000000103" displayName="Problem/Diagnosis: This Visit"/>
+										<title>Problem/Diagnoses: This Visit</title>
+										<component typeCode="COMP" contextConductionInd="true">
+											<section classCode="DOCSECT" moodCode="EVN">
+												<code codeSystem="2.16.840.1.113883.2.1.3.2.4.15" code="163001000000103" displayName="Primary Problem/Diagnosis"/>
+												<title>Primary Problem/Diagnosis:</title>
+												<text>
+
+<table>
+	<tr>
+		<th>
+													Problem/Diagnosis
+													</th>
+		<th>
+													Date Start
+													</th>
+		<th>
+													Note
+													</th>
+		<th>
+													Awareness
+													</th>
+		<th>
+													Person
+													</th>
+		<th>
+													Reason
+													</th>
+	</tr>
+	<tr>
+		<td>
+													Right bronchogenic carcinoma
+													</td>
+		<td>
+													11 Feb 2006
+													</td>
+		<td>
+													Probable - Diagnosed on bronchoscopic exam. Histology result pending.
+													</td>
+		<td>
+													no
+													</td>
+		<td>
+													Patient
+													</td>
+		<td>
+													Request of family
+													</td>
+	</tr>
+</table>
+</text>
+											</section>
+										</component>
+
+										<component typeCode="COMP" contextConductionInd="true">
+											<section classCode="DOCSECT" moodCode="EVN">
+												<id root="962135D0-AF8D-11DB-8493-EE0207DED956"/>
+												<code codeSystem="2.16.840.1.113883.2.1.3.2.4.15" code="163001000000103" displayName="Secondary Problem/Diagnosis"/>
+												<title>Secondary Problem/Diagnosis</title>
+<text>
+												<table>
+													<tr>
+													<th>
+													Problem/Diagnosis
+													</th>
+													<th>
+													Date Start
+													</th>
+													<th>
+													Note
+													</th>
+													<th>
+													Awareness
+													</th>
+													<th>
+													Person
+													</th>
+													<th>
+													Reason
+													</th>
+													</tr>
+													<tr>
+													<td>
+													Iron Deficiency Anaemia
+													</td>
+													<td>
+													12 Feb 2006
+													</td>
+													<td>
+													? Dietary; ? haemoptysis induced
+													</td>
+													<td>
+													yes
+													</td>
+													<td>&#160;</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td>
+													Chronic Obstructive Pulmonary Disease 
+													</td>
+													<td>
+													2003
+													</td>
+													<td>&#160;</td>
+													<td>
+													yes
+													</td>
+													<td>&#160;</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td>
+													Atrial Fibrillation
+													</td>
+													<td>
+													2003
+													</td>
+													<td>&#160;</td>
+													<td>
+													yes
+													</td>
+													<td>&#160;</td>
+													<td>&#160;</td>
+													</tr>
+													</table>
+</text>
+
+											</section>
+										</component>
+
+										<component typeCode="COMP" contextConductionInd="true">
+											<templateId root="2.16.840.1.113883.2.1.3.2.4.18.2" extension="COCD_TP146042AUtest01.DischargeTextSection"/>
+											<section classCode="DOCSECT" moodCode="EVN">
+												<typeId root="2.16.840.1.113883.1.3" extension="COCD_TP146041AUtest01#DischargeCRETypeSection"/>
+												<id root="962135D0-AF8D-11DB-8493-EE0207DED956"/>
+												<code codeSystem="2.16.840.1.113883.2.1.3.2.4.15" code="163001000000103" displayName="Complications"/>
+												<title>Complications</title>
+												<text>
+												<table>
+													<tr>
+													<th>
+													Complications
+													</th>
+													<th>
+													Date Start
+													</th>
+													<th>
+													Note
+													</th>
+													<th>
+													Awareness
+													</th>
+													<th>
+													Person
+													</th>
+													<th>
+													Reason
+													</th>
+													</tr>
+													<tr>
+													<td>
+													Post biopsy haemoptysis/bleeding
+													</td>
+													<td>
+													12 Feb 2006
+													</td>
+													<td>
+													Post bronchoscopic biopsy
+													</td>
+													<td>
+													yes
+													</td>
+													<td>
+													Patient &amp; family
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td>
+													Acute lower respiratory infection
+													</td>
+													<td>
+													19 Mar 2005
+													</td>
+													<td>
+													Post bronchoscopic biopsy
+													</td>
+													<td>
+													yes
+													</td>
+													<td>
+													Patient &amp; family
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td>
+													Laceration Right Arm
+													</td>
+													<td>
+													19 Mar 2005
+													</td>
+													<td>
+													Fall
+													</td>
+													<td>
+													yes
+													</td>
+													<td>
+													Patient &amp; family
+													</td>
+													<td>
+													Secondary to acute confusion/LRI
+													</td>
+													</tr>
+													</table>
+												</text>
+											</section>
+										</component>
+									</section>
+								</component>
+
+								<component typeCode="COMP" contextConductionInd="true">
+									<section classCode="DOCSECT" moodCode="EVN">
+										<code codeSystem="2.16.840.1.113883.2.1.3.2.4.15" code="163001000000103" displayName="Associated Problems/Comorbidities"/>
+										<title>Associated Problems/Comorbidities</title>
+										<text>
+										<table>
+											<tr>
+											<th>
+											Problem/Diagnosis
+											</th>
+											<th>
+											Date Start
+											</th>
+											<th>
+											Note
+											</th>
+											<th>
+											Awareness
+											</th>
+											<th>
+											Person
+											</th>
+											<th>
+											Reason
+											</th>
+											</tr>
+											<tr>
+											<td>
+											Chronic Ischaemic Heart Disease
+											</td>
+											<td>
+											2002
+											</td>
+											<td>&#160;</td>
+											<td>
+											yes
+											</td>
+											<td>
+											Patient &amp; family
+											</td>
+											<td>&#160;</td>
+											</tr>
+											<tr>
+											<td>
+											Osteoarthritis
+											</td>
+											<td>
+											1996
+											</td>
+											<td>&#160;</td>
+											<td>
+											yes
+											</td>
+											<td>
+											Patient &amp; family
+											</td>
+											<td>&#160;</td>
+											</tr>
+											<tr>
+											<td>
+											Tuberculosis
+											</td>
+											<td>
+											1964
+											</td>
+											<td>&#160;</td>
+											<td>
+											yes
+											</td>
+											<td>
+											Patient &amp; family
+											</td>
+											<td>&#160;</td>
+											</tr>
+											</table>
+</text>
+
+
+									</section>
+								</component>
+
+								<component typeCode="COMP" contextConductionInd="true">
+									<section classCode="DOCSECT" moodCode="EVN">
+										<code codeSystem="2.16.840.1.113883.2.1.3.2.4.15" code="163001000000103" displayName="Procedures Performed: This Visit"/>
+										<title>Procedures Performed: This Visit</title>
+										<text>
+										<table>
+											<tr>
+											<th>
+											Procedure 
+											</th>
+											<th>
+											Performed Date
+											</th>
+											<th>
+											Procedure Note
+											</th>
+											</tr>
+											<tr>
+											<td>
+											Bronchoscopy and biopsy
+											</td>
+											<td>
+											10 Feb 2006
+											</td>
+											<td>
+											Haemorrhagic growth noted on right bronchus.  Brush biopsy taken.  Histology result pending.
+											</td>
+											</tr>
+											</table>
+											</text>
+									</section>
+								</component>
+
+								<component typeCode="COMP" contextConductionInd="true">
+									<section classCode="DOCSECT" moodCode="EVN">
+										<code codeSystem="2.16.840.1.113883.2.1.3.2.4.15" code="163001000000103" displayName="Discharge Medications"/>
+										<title>Discharge Medications</title>
+										<text>
+										<table>
+											<tr>
+											<th>
+											Medication Name
+											</th>
+											<th>
+											Form
+											</th>
+											<th>
+											Strength
+											</th>
+											<th>
+											Dose
+											</th>
+											<th>
+											Frequency
+											</th>
+											<th>
+											Frequency
+											Qualifier
+											</th>
+											<th>
+											Route
+											</th>
+											<th>
+											Quantity
+											</th>
+											<th>
+											Duration
+											</th>
+											<th>
+											Reason for Medication
+											</th>
+											<th>
+											Status
+											</th>
+											<th>
+											Change Description
+											</th>
+											<th>
+											Change Reason
+											</th>
+											</tr>
+											<tr>
+											<td>
+											Cefuroxine
+											</td>
+											<td>
+											Tablet
+											</td>
+											<td>
+											250 mg
+											</td>
+											<td>
+											500 mg
+											</td>
+											<td>
+											Twice daily
+											</td>
+											<td>&#160;</td>
+											<td>
+											Oral
+											</td>
+											<td>
+											8
+											</td>
+											<td>
+											2 Days
+											</td>
+											<td>
+											Respiratory. infection
+											</td>
+											<td>
+											New
+											</td>
+											<td>&#160;</td>
+											<td>&#160;</td>
+											</tr>
+											<tr>
+											<td>&#160;</td>
+											<td rowspan="1" colspan="12">
+											Take 2 tablets twice daily for 2 days
+											</td>
+											</tr>
+											<tr>
+											<td>
+											Ferrous Sulphate (Ferro-Gradumet)
+											</td>
+											<td>
+											Tablet
+											</td>
+											<td>
+											105 micro-gram
+											</td>
+											<td>
+											105 micro-gram
+											</td>
+											<td>
+											once daily
+											</td>
+											<td>&#160;</td>
+											<td>
+											Oral
+											</td>
+											<td>
+											30
+											</td>
+											<td>
+											1 month
+											</td>
+											<td>
+											Fe deficiency anaemia
+											</td>
+											<td>
+											New
+											</td>
+											<td>&#160;</td>
+											<td>&#160;</td>
+											</tr>
+											<tr>
+											<td>&#160;</td>
+											<td rowspan="1" colspan="12">
+											Take 1 tablet once daily for 1 month then  see GP to recheck Ferritin and Iron Studies
+											</td>
+											</tr>
+											<tr>
+											<td>
+											Salbutamol (Ventolin)
+											</td>
+											<td>
+											Metered Dose Inhaler
+											</td>
+											<td>
+											100 micro-gram
+											</td>
+											<td>
+											100-200 micro-gram
+											</td>
+											<td>
+											3-4 times daily
+											</td>
+											<td>
+											PRN
+											</td>
+											<td>
+											Inhale
+											</td>
+											<td>
+											1 pack
+											</td>
+											<td>
+											On-going
+											</td>
+											<td>&#160;</td>
+											<td>
+											Existing (admission medication) - unaltered
+											</td>
+											<td>&#160;</td>
+											<td>&#160;</td>
+											</tr>
+											<tr>
+											<td>&#160;</td>
+											<td rowspan="1" colspan="12">
+											1-2 inhalations 3-4 times daily as required
+											</td>
+											</tr>
+											<tr>
+											<td>
+											Voltaren SR
+											</td>
+											<td>
+											Tablet
+											</td>
+											<td>
+											50 mg
+											</td>
+											<td>
+											50 mg
+											</td>
+											<td>
+											once daily
+											</td>
+											<td>
+											After meals
+											</td>
+											<td>
+											Oral
+											</td>
+											<td>
+											7
+											</td>
+											<td>
+											7 days
+											</td>
+											<td>&#160;</td>
+											<td>
+											Existing (admission medication) - altered
+											</td>
+											<td>
+											dose decreased from 75 mg
+											</td>
+											<td>
+											Prevent major side effect (GI Bleeding)
+											</td>
+											</tr>
+											<tr>
+											<td>&#160;</td>
+											<td rowspan="1" colspan="12">
+											Must not take drug on empty stomach
+											</td>
+											</tr>
+											</table>
+										</text>
+									</section>
+								</component>
+
+								<component typeCode="COMP" contextConductionInd="true">
+									<section classCode="DOCSECT" moodCode="EVN">
+										<code codeSystem="2.16.840.1.113883.2.1.3.2.4.15" code="163001000000103" displayName="Medications Ceased: This Visit"/>
+										<title>Medications Ceased: This Visit</title>
+										<text>
+										<table>
+											<tr>
+											<th>
+											Medication Name
+											</th>
+											<th>
+											Form
+											</th>
+											<th>
+											Strength
+											</th>
+											<th>
+											Dose
+											</th>
+											<th>
+											Frequency
+											</th>
+											<th>
+											Route
+											</th>
+											<th>
+											Quantity
+											</th>
+											<th>
+											Duration
+											</th>
+											<th>
+											Change Reason
+											</th>
+											</tr>
+											<tr>
+											<td>
+											Warfarin
+											</td>
+											<td>
+											Tablet
+											</td>
+											<td>&#160;</td>
+											<td>
+											5 mg
+											</td>
+											<td>
+											Once daily
+											</td>
+											<td>
+											Oral
+											</td>
+											<td>&#160;</td>
+											<td>
+											3 years
+											</td>
+											<td>
+											Due to post bronchoscopic biopsy bleeding
+											</td>
+											</tr>
+											<tr>
+											<td>&#160;</td>
+											<td rowspan="1" colspan="8">
+											See GP after 1 week to check INR and consider re-commencing Warfarin therapy.
+											</td>
+											</tr>
+											</table>
+</text>
+
+
+									</section>
+								</component>
+
+								<component typeCode="COMP" contextConductionInd="true">
+									<section classCode="DOCSECT" moodCode="EVN">
+										<code codeSystem="2.16.840.1.113883.2.1.3.2.4.15" code="163001000000103" displayName="Known Adverse Reactions &amp; Alerts"/>
+										<title>Known Adverse Reactions &amp; Alerts</title>
+										<component typeCode="COMP" contextConductionInd="true">
+											<section classCode="DOCSECT" moodCode="EVN">
+												<code codeSystem="2.16.840.1.113883.2.1.3.2.4.15" code="163001000000103" displayName="Adverse Reactions/Allergies"/>
+												<title>Adverse Reactions/Allergies</title>
+												<text>
+												<table>
+													<tr>
+													<th>
+													Agent
+													</th>
+													<th>
+													Reaction
+													</th>
+													<th>
+													Finding Sites
+													</th>
+													<th>
+													Site Qualifier
+													</th>
+													<th>
+													Date Start
+													</th>
+													<th>
+													Reaction Note
+													</th>
+													</tr>
+													<tr>
+													<td>
+													Penicillin
+													</td>
+													<td>
+													Skin rash
+													</td>
+													<td>
+													abdomen
+													</td>
+													<td>
+													Right upper quadrant
+													</td>
+													<td>
+													Oct 1996
+													</td>
+													<td>
+													Suspected.  No further episode since.
+													</td>
+													</tr>
+													<tr>
+													<td>
+													Peanuts
+													</td>
+													<td>
+													Swelling
+													</td>
+													<td>
+													Face
+													</td>
+													<td>&#160;</td>
+													<td>
+													Since childhood
+													</td>
+													<td>&#160;</td>
+													</tr>
+													</table>
+												</text>
+											</section>
+										</component>
+
+										<component typeCode="COMP" contextConductionInd="true">
+											<section classCode="DOCSECT" moodCode="EVN">
+												<code codeSystem="2.16.840.1.113883.2.1.3.2.4.15" code="163001000000103" displayName="Alerts/Warnings"/>
+												<title>Alerts/Warnings</title>
+												<text>
+												<table>
+													<tr>
+													<th>
+													Alert Description
+													</th>
+													<th>
+													Date Start
+													</th>
+													<th>
+													Alert Note
+													</th>
+													</tr>
+													<tr>
+													<td>
+													Post anaesthetic/bronchoscopic biopsy acute confusion
+													</td>
+													<td>
+													20 Feb 2006
+													</td>
+													<td>
+													Acute confusion lasted for three days.  Resolved spontaneously.
+													</td>
+													</tr>
+													</table>
+												</text>
+											</section>
+										</component>
+
+									</section>
+								</component>
+
+								<component typeCode="COMP" contextConductionInd="true">
+									<section classCode="DOCSECT" moodCode="EVN">
+										<code codeSystem="2.16.840.1.113883.2.1.3.2.4.15" code="163001000000103" displayName="Clinical Management"/>
+										<title>Clinical Management</title>
+										<text mediaType="text/x-hl7-text+xml">
+											<paragraph>
+											81 year old man with past history of 60 pack-years cigarette smoking, admitted after 3 days of progressive dyspnoea, tachypnoea and haemoptysis.  Bronchoscopy performed on 10/02 reviewed haemorrhagic growth about 1.5 cm in diameter at right bronchus 2.5 cm distal to the tracheal bifurcation.  Appears consistent with squamous cell carcinoma.  Brush biopsy taken.  Developed post-biopsy acute lower respiratory tract infection, haemoptysis and acute confusion.  Confusion resulted in a fall and laceration to right forearm. Treated with IV fluids, IV Ceftriaxone, oxygen, nebulised Salbutamol. Improvement after 3 days, changed to oral Cefuroxime.  Histology result pending.  Discussion with patient and family who requested no further investigations or treatment for that problem, except support and palliative care if/when needed.  Mild Iron Deficiency Anaemia treated with oral Iron initiated.
+											</paragraph>
+										</text>
+									</section>
+								</component>
+
+								<component typeCode="COMP" contextConductionInd="true">
+									<section classCode="DOCSECT" moodCode="EVN">
+										<code codeSystem="2.16.840.1.113883.2.1.3.2.4.15" code="163001000000103" displayName="Follow Up"/>
+										<title>Follow Up</title>
+
+										<component typeCode="COMP" contextConductionInd="true">
+											<section classCode="DOCSECT" moodCode="EVN">
+												<code codeSystem="2.16.840.1.113883.2.1.3.2.4.15" code="163001000000103" displayName="Requested Service"/>
+												<title>Requested Service</title>
+												<text>
+												<table>
+													<tr>
+													<th>
+													Referred to
+													</th>
+													<th>
+													Service Requested
+													</th>
+													<th>
+													Service Reason
+													</th>
+													<th>
+													Proposed Start
+													</th>
+													</tr>
+													<tr>
+													<td>
+													Dr Palliative Care<br/>
+													24 Palliative Road<br/>
+													Adelaide SA 5000<br/>
+													</td>
+													<td>
+													Palliative care assessment, planning and placement
+													</td>
+													<td>
+													Patient family requested palliative care instead of active surgical or oncology intervention in view of age and frailty of patient 
+													</td>
+													<td>
+													27 Mar 2006
+													</td>
+													</tr>
+													<tr>
+													<td>
+													Ms Gin Nutrition<br/>
+													Nutritionist
+													</td>
+													<td>
+													Nutritional Planning
+													</td>
+													<td>
+													Assess and advise on dietary intake
+													</td>
+													<td>
+													1 Mar 2006
+													</td>
+													</tr>
+													</table>
+												</text>
+											</section>
+										</component>
+
+										<component typeCode="COMP" contextConductionInd="true">
+											<section classCode="DOCSECT" moodCode="EVN">
+												<code codeSystem="2.16.840.1.113883.2.1.3.2.4.15" code="163001000000103" displayName="Patient Instructions"/>
+												<title>Patient Instructions</title>
+												<text mediaType="text/x-hl7-text+xml">
+											<paragraph>
+											See GP within 1 week to renew medications - anticoagulant in particular and discuss options for support regarding probable lung malignancy.  Watch out for gastro-intestinal bleeding which might be caused by Voltaren and discuss options for support regarding probable lung malignancy.  Return to emergency department in case of respiratory distress and signs of bleeding.
+											</paragraph>
+										</text>
+
+											</section>
+										</component>
+
+									</section>
+								</component>
+
+								<component typeCode="COMP" contextConductionInd="true">
+									<section classCode="DOCSECT" moodCode="EVN">
+										<code codeSystem="2.16.840.1.113883.2.1.3.2.4.15" code="163001000000103" displayName="Recommendations to GP"/>
+										<title>Recommendations to GP</title>
+										<text mediaType="text/x-hl7-text+xml">
+											<paragraph>
+											Please review patient's anticoagulant therapy to maintain INR at 2.5 to 3.5; discuss palliative care and issues with patient and family; monitor patient for risk of GI bleeding associated with Voltaren.
+											</paragraph>
+										</text>
+									</section>
+								</component>
+
+								<component typeCode="COMP" contextConductionInd="true">
+									<section classCode="DOCSECT" moodCode="EVN">
+										<code codeSystem="2.16.840.1.113883.2.1.3.2.4.15" code="163001000000103" displayName="Investigations - Detailed Reports"/>
+										<title>Investigations - Detailed Reports</title>
+
+										<component typeCode="COMP" contextConductionInd="true">
+											<section classCode="DOCSECT" moodCode="EVN">
+												<code codeSystem="2.16.840.1.113883.2.1.3.2.4.15" code="163001000000103" displayName="Pathology"/>
+												<title>Pathology</title>
+<text>
+												<table>
+													<tr>
+													<th>
+													Test name:
+													</th>
+													<td rowspan="1" colspan="2">
+													Iron Studies
+													</td>
+													<th>
+													Requesting Provider:
+													</th>
+													<td>
+													Ozie Registrar
+													</td>
+													</tr>
+													<tr>
+													<th>
+													Performed Date:
+													</th>
+													<td rowspan="1" colspan="2">
+													17 Feb 2006
+													</td>
+													<th>
+													Reporting Pathologist:
+													</th>
+													<td>
+													Jones Haematologist
+													</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="3">&#160;</td>
+													<th>
+													Result Status:
+													</th>
+													<td>
+													Final
+													</td>
+													</tr>
+													<tr>
+													<th rowspan="1" colspan="2">
+													Result name
+													</th>
+													<th>
+													Value
+													</th>
+													<th>
+													Reference Range
+													</th>
+													<th>
+													Abnormal Indicator
+													</th>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Iron
+													</td>
+													<td>
+													5 umol/L
+													</td>
+													<td>
+													8 - 30
+													</td>
+													<td>
+													L
+													</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Serum/Plasma Ferritin
+													</td>
+													<td>
+													23 ug/L
+													</td>
+													<td>
+													20 - 300
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													SATURATION
+													</td>
+													<td>
+													8 %
+													</td>
+													<td>
+													10 - 50
+													</td>
+													<td>
+													L
+													</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Transferrin
+													</td>
+													<td>
+													2.2 g/L
+													</td>
+													<td>
+													2.0 - 3.6
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tfoot>	
+
+													<tr>
+													<td rowspan="1" colspan="5">
+													Note: Iron deficiency cannot be excluded in inflammation or chronic disease are present as these may elevate the ferritin into the normal range.  Suggest other haematinics screening if not known.  Dr Jones Haematologist.
+													</td>
+													</tr>
+														</tfoot>	
+
+													</table>
+			<paragraph></paragraph>
+
+													<table>
+													<tr>
+													<th>
+													Test name:
+													</th>
+													<td rowspan="1" colspan="2">
+													Full Blood Count
+													</td>
+													<th>
+													Requesting Provider:
+													</th>
+													<td>
+													Ozie Registrar
+													</td>
+													</tr>
+													<tr>
+													<th>
+													Performed Date:
+													</th>
+													<td rowspan="1" colspan="2">
+													17 Feb 2006
+													</td>
+													<th>
+													Reporting Pathologist:
+													</th>
+													<td>
+													Jones Haematologist
+													</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="3">
+													&#160;
+													</td>
+													<th>
+													Result Status:
+													</th>
+													<td>
+													Final
+													</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													&#160;
+													</td>
+													<td>&#160;</td>
+													<td>&#160;</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<th rowspan="1" colspan="2">
+													Result name
+													</th>
+													<th>
+													Value
+													</th>
+													<th>
+													Reference Range
+													</th>
+													<th>
+													Abnormal Indicator
+													</th>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Haemoglobin
+													</td>
+													<td>
+													130 g/L
+													</td>
+													<td>
+													135 - 175
+													</td>
+													<td>
+													L
+													</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													RBC
+													</td>
+													<td>
+													4.5x10^12/L
+													</td>
+													<td>
+													4.5 - 6.0
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													PCV
+													</td>
+													<td>
+													0.40 L/L
+													</td>
+													<td>
+													0.40 - 0.50
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													MCV
+													</td>
+													<td>
+													78 fl
+													</td>
+													<td>
+													80.0 - 98.0
+													</td>
+													<td>
+													L
+													</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													MCH
+													</td>
+													<td>
+													28.0 pg
+													</td>
+													<td>
+													27.0-33.0
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													MCHC
+													</td>
+													<td>
+													320 g/L
+													</td>
+													<td>
+													315-355
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													RDW
+													</td>
+													<td>
+													11.0%
+													</td>
+													<td>
+													11.5-15.5
+													</td>
+													<td>
+													L
+													</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													White Cell Count
+													</td>
+													<td>
+													20.0x10^9/L
+													</td>
+													<td>
+													4.00-11.00
+													</td>
+													<td>
+													HH
+													</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Neutrophils
+													</td>
+													<td>
+													16.0x10^9/L
+													</td>
+													<td>
+													1.80 -7.50 
+													</td>
+													<td>
+													HH
+													</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Neutrophils %
+													</td>
+													<td>
+													80.0%
+													</td>
+													<td>&#160;</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Lymphocytes
+													</td>
+													<td>
+													3.05x10^9/L
+													</td>
+													<td>
+													1.00 - 3.50
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Lymphocytes %
+													</td>
+													<td>
+													15.25%
+													</td>
+													<td>&#160;</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Monocytes
+													</td>
+													<td>
+													0.8x10^9/L
+													</td>
+													<td>
+													0.20 - 0.80
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Monocytes %
+													</td>
+													<td>
+													4.0%
+													</td>
+													<td>&#160;</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Eosinophils
+													</td>
+													<td>
+													0.03x10^9/L
+													</td>
+													<td>
+													0.02 - 0.50
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Eosinophils %
+													</td>
+													<td>
+													0.15%
+													</td>
+													<td>&#160;</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Basophils
+													</td>
+													<td>
+													0.02x10^9/L
+													</td>
+													<td>
+													0.02 - 0.10
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Basophils %
+													</td>
+													<td>
+													0.1%
+													</td>
+													<td>&#160;</td>
+													<td>&#160;</td> 
+													</tr>
+														<tfoot>	
+
+													<tr>
+													<td rowspan="1" colspan="5">
+													Note:  Microcytic anaemia.  Suggest Ferritin and Iron Studies.  High white cell count with neutrophilia - ? infection.
+													Dr Jones Haematologist.
+													</td>
+													</tr>
+															</tfoot>	
+
+													</table>
+
+			<paragraph></paragraph>
+
+													<table>
+													<tr>
+													<th>
+													Test name:
+													</th>
+													<td rowspan="1" colspan="2">
+													Biochemistry
+													</td>
+													<th>
+													Requesting Provider:
+													</th>
+													<td>
+													Ozie Registrar
+													</td>
+													</tr>
+													<tr>
+													<th>
+													Performed Date:
+													</th>
+													<td rowspan="1" colspan="2">
+													17 Feb 2006
+													</td>
+													<th>
+													Reporting Pathologist:
+													</th>
+													<td>
+													Richard Biochemist
+													</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="3">&#160;</td>
+													<th>
+													Result Status:
+													</th>
+													<td>
+													Final
+													</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">&#160;</td>
+													<td>&#160;</td>
+													<td>&#160;</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<th rowspan="1" colspan="2">
+													Result name
+													</th>
+													<th>
+													Value
+													</th>
+													<th>
+													Reference Range
+													</th>
+													<th>
+													Abnormal Indicator
+													</th>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Electrolytes
+													</td>
+													<td>&#160;</td>
+													<td>&#160;</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Sodium
+													</td>
+													<td>
+													141 mmol/L
+													</td>
+													<td>
+													137 - 145
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Potassium
+													</td>
+													<td>
+													4.0 mmol/L
+													</td>
+													<td>
+													3.5 - 4.9
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Chloride
+													</td>
+													<td>
+													103 mmol/L
+													</td>
+													<td>
+													100 - 109
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Bicarbonate
+													</td>
+													<td>
+													30 mmol/L
+													</td>
+													<td>
+													22 - 32
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Anion Gap
+													</td>
+													<td>
+													12 mmol/L
+													</td>
+													<td>
+													7 - 17
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Glucose
+													</td>
+													<td>
+													5.0 mmol/L
+													</td>
+													<td>
+													3.5 - 5.5
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Urea
+													</td>
+													<td>
+													7.1 mmol/L
+													</td>
+													<td>
+													2.7 - 8.0
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Creatinine
+													</td>
+													<td>
+													0.095 mmol/L
+													</td>
+													<td>
+													0.050 - 0.120
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Cholesterol
+													</td>
+													<td>
+													5.0 mmol/L
+													</td>
+													<td>
+													&lt; 5.5
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Urate
+													</td>
+													<td>
+													0.28 mmol/L
+													</td>
+													<td>
+													0.15 - 0.45
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Phosphate
+													</td>
+													<td>
+													1.00 mmol/L
+													</td>
+													<td>
+													0.65 - 1.45
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Total Calcium
+													</td>
+													<td>
+													2.30 mmol/L
+													</td>
+													<td>
+													2.10 - 2.55
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Ionised Calcium
+													</td>
+													<td>
+													1.15 mmol/L
+													</td>
+													<td>
+													1.10 -1.25
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Liver Function Tests
+													</td>
+													<td>&#160;</td>
+													<td>&#160;</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Albumin
+													</td>
+													<td>
+													43 g/L
+													</td>
+													<td>
+													34 - 48
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Globulin
+													</td>
+													<td>
+													35 g/L
+													</td>
+													<td>
+													26 - 41
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Protein
+													</td>
+													<td>
+													80 g/L
+													</td>
+													<td>
+													65 - 85
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													Total Bilirubin
+													</td>
+													<td>
+													7 umol/L
+													</td>
+													<td>
+													6 - 24
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													GGT
+													</td>
+													<td>
+													24 U/L
+													</td>
+													<td>
+													0 - 60
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													ALP
+													</td>
+													<td>
+													47 U/L
+													</td>
+													<td>
+													30 - 110
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													ALT
+													</td>
+													<td>
+													40 U/L
+													</td>
+													<td>
+													0 - 55
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													AST
+													</td>
+													<td>
+													24 U/L
+													</td>
+													<td>
+													0 - 45
+													</td>
+													<td>&#160;</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">
+													LDH
+													</td>
+													<td>
+													220 U/L
+													</td>
+													<td>
+													110 - 230
+													</td>
+													<td>&#160;</td>
+													</tr>
+														<tfoot>	
+
+													<tr>
+													<td rowspan="1" colspan="5">
+													Note: No abnormalities detected.  Dr Richard Biochemist.
+													</td>
+													</tr>
+															</tfoot>	
+
+													</table>
+
+			<paragraph></paragraph>
+
+													<table>
+													<tr>
+													<th>
+													Test name:
+													</th>
+													<td>
+													Sputum MC&amp;S
+													</td>
+													<th>
+													Requesting Provider:
+													</th>
+													<td>
+													Ozie Registrar
+													</td>
+													</tr>
+													<tr>
+													<th>
+													Performed Date:
+													</th>
+													<td>
+													18 Feb 2006
+													</td>
+													<th>
+													Reporting Pathologist:
+													</th>
+													<td>
+													Collin Microbiologist
+													</td>
+													</tr>
+													<tr>
+													<td rowspan="1" colspan="2">&#160;</td>
+													<th>
+													Result Status:
+													</th>
+													<td>
+													Final
+													</td>
+													</tr>
+														<tfoot>	
+
+													<tr>
+													<td rowspan="1" colspan="4">
+													Mixed oral flora only.  No Acid Fast Bacilli detected.
+													Dr. Collin Microbiologist
+													</td>
+													</tr>
+															</tfoot>	
+
+													</table>
+
+												</text>
+
+
+											</section>
+										</component>
+
+									</section>
+								</component>
+
+								<component typeCode="COMP" contextConductionInd="true">
+									<section classCode="DOCSECT" moodCode="EVN">
+										<code codeSystem="2.16.840.1.113883.2.1.3.2.4.15" code="163001000000103" displayName="Diagnostic Imaging"/>
+										<title>Diagnostic Imaging</title>
+										<text>
+										<table>
+											<tr>
+											<th>
+											Investigation name:
+											</th>
+											<td>
+											CHEST: (AP/T/LATERAL)
+											</td>
+											<th>
+											Requesting Provider:
+											</th>
+											<td>
+											Ozie Registrar
+											</td>
+											</tr>
+											<tr>
+											<th>
+											Performed Date:
+											</th>
+											<td>
+											13 Feb 2006
+											</td>
+											<th>
+											Reporting Provider:
+											</th>
+											<td>
+											Ray Radiologist
+											</td>
+											</tr>
+											<tr>
+											<td rowspan="1" colspan="2">&#160;</td>
+											<th>
+											Result Status:
+											</th>
+											<td>
+											Final
+											</td>
+											</tr>
+											<tfoot>	
+												<tr>
+											<td rowspan="1" colspan="4">
+											CLINICAL: History of old pulmonary tuberculosis. Right mid lung mass, presents with haemoptysis.<br/>
+											No previous images are available for comparison at the time of reporting. Calcification spots throughout both upper lung fields consistent with old pulmonary tuberculosis. No hilar mass is seen however the right pulmonary hila appears slightly elevated. Appearances are suspicious of neoplasm and further imaging is suggested. The right lateral costophrenic angle is blunted and this maybe secondary to pleural thickening or a tiny basal effusion.  
+											Dr S. Ray
+											</td>
+											</tr>
+											</tfoot>	
+
+											</table>
+
+			<paragraph></paragraph>
+
+											<table>
+											<tr>
+											<th>
+											Investigation name:
+											</th>
+											<td>
+											CHEST: (AP/T/LATERAL)
+											</td>
+											<th>
+											Requesting Provider:
+											</th>
+											<td>
+											Ozie Registrar
+											</td>
+											</tr>
+											<tr>
+											<th>
+											Performed Date:
+											</th>
+											<td>
+											20 Feb 2006
+											</td>
+											<th>
+											Reporting Provider:
+											</th>
+											<td>
+											Ray Radiologist
+											</td>
+											</tr>
+											<tr>
+											<td rowspan="1" colspan="2">&#160;</td>
+											<th>
+											Result Status:
+											</th>
+											<td>
+											Final
+											</td>
+											</tr>
+											<tr>
+											</tr>
+												<tfoot>	
+
+											<tr>
+											<td rowspan="1" colspan="4">
+											CLINICAL: History of old pulmonary tuberculosis. Right mid lung mass, presents with haemoptysis. Post bronchoscopic fever and confusion.<br/>
+											Mark increased infiltration and inflammatory signs in right and left lower lobes consistent with signs of pneumonia.  No consolidation or fluid effusion noted.  Impression: lower lobes pneumonia, both lungs.
+											Dr S. Ray
+											</td>
+											</tr>
+													</tfoot>	
+											</table>
+
+			<paragraph></paragraph>
+
+											<table>
+											<tr>
+											<th>
+											Investigation name:
+											</th>
+											<td>
+											CT CHEST
+											</td>
+											<th>
+											Requesting Provider:
+											</th>
+											<td>
+											James
+											</td>
+											</tr>
+											<tr>
+											<th>
+											Performed Date:
+											</th>
+											<td>
+											20 Feb 2006
+											</td>
+											<th>
+											Reporting Provider:
+											</th>
+											<td>
+											Roberts
+											</td>
+											</tr>
+											<tr>
+											<td rowspan="1" colspan="2">&#160;</td>
+											<th>
+											Result Status:
+											</th>
+											<td>
+											Final
+											</td>
+											</tr>
+											<tfoot>	
+											<tr>
+											<td rowspan="1" colspan="4">
+											CLINICAL: Right mid lung mass.  Bronchoscopy revealed right main bronchus mass distal to tracheal bifurcation. Confirmed a right bronchogenic mass distal to the tracheal bifurcation consistent with a primary lung neoplasm.
+											Dr Ray Radiologist
+											</td>
+											</tr>
+											</tfoot>
+											</table>
+</text>
+
+									</section>
+								</component>
+
+								<component typeCode="COMP" contextConductionInd="true">
+									<templateId root="2.16.840.1.113883.2.1.3.2.4.18.2" extension="COCD_TP146041AUtest01.DischargeCRETypeSection"/>
+									<section classCode="DOCSECT" moodCode="EVN">
+										<typeId root="2.16.840.1.113883.1.3" extension="COCD_TP146041AUtest01#DischargeCRETypeSection"/>
+										<id root="962135D0-AF8D-11DB-8493-EE0207DED956"/>
+										<code codeSystem="2.16.840.1.113883.2.1.3.2.4.15" code="163001000000103" displayName="Other Investigations"/>
+										<title>Other Investigations</title>
+										<text>
+										<table>
+											<tr>
+											<th>
+											Date
+											</th>
+											<th>
+											Description
+											</th>
+											<th>
+											Result
+											</th>
+											<th>
+											Abnormal Flag
+											</th>
+											</tr>
+											<tr>
+											<td>
+											18 Feb 2006
+											</td>
+											<td>
+											ECG
+											</td>
+											<td>
+											Controlled atrial Fibrillation, rate 85/min
+											</td>
+											<td>&#160;</td>
+											</tr>
+											</table>
+</text>
+
+									</section>
+								</component>
+
+		</structuredBody>
+	</component>			
+ </ClinicalDocument>

@@ -1,0 +1,71 @@
+﻿<!-- regla con acciones que devuelven valores -->
+<!-- XML Rule xrl -->
+<xrl:rule xmlns:xrl="http://cabolabs.com/xre">
+  <header>
+    <id>rule7_file_resolution.v1</id>
+    <name>obtencion de valores desde un archivo xml en el filesystem local</name>
+    <description />
+    <keywords />
+  </header>
+  
+  <declarations>
+  
+    <!-- Variables = Se deben resolver con resolutions -->
+    <var name="a_date" type="date" />
+    
+    
+    <var name="procedure_codes" type="collection" />
+    
+    
+    <!-- Constantes = Declaracions con valor -->
+    <var name="ret_warning" value="warning" type="string" />
+    <var name="ret_ok" value="ok" type="string" />
+    
+  </declarations>
+  
+  <input>
+    <!--
+    <param name="patient_id" type="string" />
+    <param name="medication_drug" type="string" />
+    -->
+  </input>
+  
+  <resolutions>
+  
+    <!-- Los params vienen en el init de la regla y es distinto a los valores de input -->
+    <!-- Cuidado: en este caso params es una lista porque tiene solo los nombres
+         de los params que luego van a venir en el init
+    -->
+    
+    <!-- FIXME: las paths deberian ser independientes del SO -->
+    
+    <file var="a_date">
+      <locator path="rules/data_files" filename="adt_a01_abc123" extension="xml" />
+      <extractor path="PID.'PID.7'.'TS.1'" />
+      <!-- No necesita aggregator porque es unico -->
+    </file>
+    
+    <file var="procedure_codes">
+      <locator path="rules\data_files" filename="ccr_abc123" extension="xml" />
+      <extractor path="Body.Procedures.Procedure.Description.Code.Value" />
+    </file>
+    
+    
+  </resolutions>
+  
+  <logic>
+    <if>
+      <gt params="[666, 365]" />
+      <do>
+        <print params="['a_date']" />
+        <print params="['procedure_codes']" />
+        <return name="ret_warning" />
+      </do>
+    </if>
+    <else>
+      <do>
+        <return name="ret_ok" />
+      </do>
+    </else>
+  </logic>
+</xrl:rule>

@@ -1,0 +1,125 @@
+﻿<!-- una unidad es un conjunto de reglas relacionadas, por el concepto del dominio sobre el cual se aplican, y organizadas segun algun criterio logico -->
+<!-- XML Rule xrl -->
+<xrl:unit xmlns:xrl="http://openehr.org.es/2012/rulens">
+  <header>
+    <id /><!-- incluye version -->
+	<name />
+	<description />
+	<kewords />
+	<author />
+	<contributors />
+	<changeLog>
+	  <createdOn />
+      <lastModification />
+	  <change date=""><!-- interesa quien hizo cada cambio o quien es el responsable -->
+	    <added a="b" />
+		<removed c="d" />
+	  </change>
+	</changeLog>
+  </header>
+  <rules>
+    <rule>
+	  <id />
+	  <name />
+	  <description />
+	  <keywords />
+	  <events>
+	    <!-- ante que eventos se debe ejecutar esta regla -->
+	  </events>
+	  <definitions>
+	    <!-- Para definir cada variable, se hace un request HTTP GET al locator, de donde se obtiene un XML,
+		     luego se pide el valor correspondiente al extractor, que es una xpath sobre ese XML.
+			 Como parametros del request HTTP se usan los params definidos en input. -->
+	    <var name="var1" locator="http://undominio.com/unServicioXML" extractor="una_xpath" />
+		
+		<!-- aggregator sirve para cuando el valor correspondiente a la xpath es una lista, y depende del tipo de dato:
+		
+		  count: cualquier tipo, cuenta cantidad de elementos
+		  countDistinct: cualquier tipo, cuenta cantidad de elementos distintos
+		  avg,sum,high,low: tipos numericos
+		  
+		  el servicio XML ya podria hacer agregaciones internamente y proveer datos simples siempre, lo que simplificaria la logica de evaluacion de las reglas.
+		-->
+		<var name="var2" locator="http://undominio.com/unServicioXML" extractor="una_xpath" aggregator="avg" />
+		<var name="var3" locator="http://undominio.com/unServicioXML" extractor="una_xpath" />
+	  </definitions>
+	  <input><!-- las entradas son hechos -->
+		  <param name="par1" type="number" />
+		  <param name="par2" type="number" />
+		  <!-- el only for sirve para decirle a que requests enviar el param, podria definirse tambien por nombre de variable -->
+		  <!-- onlyFor tal vez esto deberia ir en la variable, diciendo que parametros usa el locator -->
+		  <param name="par3" type="number" onlyFor="locatorUrl1,locatorUrl2" />
+      </input>
+	  <logic>
+	    <!-- if-elseif-else o if-else, para estructuras logicas que necesiten mas de un elseif -->
+	    <if>
+		  <!-- expresion booleana a evaluar -->
+          <!-- puede empezar con AND|OR|NOT|una simple -->
+		  <and><!-- and binario -->
+		    <or>
+			  <!-- 'inc' es para el uso de una constante para la comparacion -->
+			  <eq in1="par2" inc2="una_constante" />
+			  <gt in1="par1" in2="par2" />
+			  <!-- <contains in1="var3" in2="par3" />--><!-- contains es un is_sub_string in2.isSubstringOf(in1) -->
+			</or>
+			<!-- mayor que, tambien puede ser lt, eq, match (para strings con regex), -->
+			<gt in1="var1" in2="par1" /><!--  var1 > par1 ? -->
+		  </and>
+		  <!-- acciones a realizar ante cumplimiento de la condicion -->
+		  <do>
+		    <!--
+			Los tipos de acciones soportados deben estar en un vocabulario controlado definido previamente.
+			En el motor se podran gestionar las acciones para agregar nuevas o modificar existentes.
+			La lista de acciones disponibles se la deberia dar el motor al editor para que en el editor se puedan usar esas definiciones para crear las reglas.
+			Cada accion debe definir los nombres de los parametros que recibe y el tipo de cada uno. Tambien si alguno es obligatorio u opcional.
+			
+			Por ejemplo, quiero:
+              - operaciones de base de datos: insert, update, delete, etc
+			  - combinacion de reglas, llamar a otras reglas
+			  - mensajeria: enviar mails, sms, paquetes tcp, requests http, requests soap, ...
+			  - log: log a disco, ...
+			  - devolver un valor (por ejemplo para reglas que se verifiquen en tiempo real)
+			
+			Cuidado: la implementacion de la accion debera estar en el motor, no en es parte del editor,
+			pero el editor DEBE saber la estructura interna por el tipo de la accion, y se podran agregar mas tipos,
+			y esa info la tiene el motor. El motor deberia decirle al editor, ej. a travez de un servicio o de una configuracion
+			exportable del motor e importable al editor, de los tipos de acciones distintas y las estructuras internas.
+			-->
+		    <action type="email">
+			  <!-- la estructura interna dependera del tipo, por ejemplo que parametros le paso -->
+			  <params>
+			    <!-- La accion toma una lista de parametros que para ella se llaman distinto,
+				para eso sirve el "as", y cada parametro es una referencia ref a un parametro o variable
+				definido en la regla, tambien podrian haber referencias a valores constantes con def -->
+			    <ref name="par1" as="email" /><!-- bindea un parametro o variable con un nombre de parametro de la accion -->
+				<ref name="var1" as="person_name" />
+				<def value="1984-06-14" type="Date" as="person_dob" />
+			  </params>
+			</action>
+			<action type="">
+			</action>
+			<action type="">
+			</action>
+		  </do>
+		</if>
+		<else>
+		  <if>
+		    <or>
+		      <gt in1="var1" in2="par1" /><!--  var1 > par1 ? -->
+			  <match in1="par1" regex="[0-9]*" />
+		    </or>
+		    <!-- accion a realizar ante cumplimiento de la condicion -->
+		    <do />
+		  </if>
+		  <else>
+			<!-- no tiene condicion -->
+			  
+			<!-- accion a realizar ante no cumplimiento de las condiciones previas -->
+			<do />
+		  </else>
+		</else>
+		
+	  </logic>
+	</rule>
+  </rules>
+</xrl:unit>

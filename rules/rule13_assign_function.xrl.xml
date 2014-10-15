@@ -1,0 +1,42 @@
+﻿<!-- regla con acciones que devuelven valores -->
+<!-- XML Rule xrl -->
+<xrl:rule xmlns:xrl="http://cabolabs.com/xre">
+  <header>
+    <id>rule13_assign_function.v1</id>
+    <name>prueba de asignacion de valores a variables</name>
+    <description />
+    <keywords />
+  </header>
+  
+  <declarations>
+    <var name="num1" type="int32" />
+    <var name="num2" type="int32" />
+  </declarations>
+  
+  <input>
+  </input>
+  
+  <resolutions>
+  </resolutions>
+  
+  <logic>
+  
+    <!-- num1 = 7 -->
+    <assign params="[7]" return="num1" />
+    <print params="['num1']" />
+    
+    <!-- num2 = 5 -->
+    <assign params="[5]" return="num2" />
+    <print params="['num2']" />
+    
+    <sum params="['num1', 'num2']" return="addition" />
+
+    <!-- type mismatch: assigns a string to an int32 -->
+    <!--
+    <assign params="['hello world']" return="num1" />
+    -->
+
+    <return name="addition" />
+
+  </logic>
+</xrl:rule>
