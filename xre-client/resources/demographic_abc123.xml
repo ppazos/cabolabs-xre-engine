@@ -1,0 +1,14 @@
+<person>
+  <id>abc123</id>
+  <name>
+    <given>Pablo</given>
+	<given>Federico</given>
+	<lastname>Pazos</lastname>
+	<lastname>Gutierrez</lastname>
+  </name>
+  <birthdate>19811024</birthdate>
+  <sex>
+    <name>Male</name>
+	<code>M</code>
+  </sex>
+</person>

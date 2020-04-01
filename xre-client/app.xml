@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<app>
+  <name>xre-client</name>
+  <description></description>
+  <version>0.1</version>
+  <langs>es en</langs>
+  <code></code>
+  <tags></tags>
+  <site></site>
+  <docs></docs>
+  <update></update>
+  <entry_point>
+    <controller>tests</controller>
+    <action>index</action>
+  </entry_point>
+</app>

@@ -1,0 +1,26 @@
+<gine_tests>
+  <patient>
+    <id>abc234</id>
+  </patient>
+  <tests>
+    <test>
+	  <test_type>TST_PAP</test_type><!-- TODO LOINC -->
+	  <test_name>Papanicolaou</test_name>
+	  <time>2012-06-27</time><!-- ISO 8601 Dates -->
+	  <!--
+	  <ref>http://en.wikipedia.org/wiki/Pap_test</ref>
+	  <ref>http://womenshealth.gov/publications/our-publications/fact-sheet/pap-test.cfm</ref>
+	  <ref>Understand results: http://www.acog.org/~/media/For%20Patients/faq161.pdf?dmc=1&ts=20120914T1238292939</ref>
+	  -->
+	  <result>normal</result>
+	  <comments></comments>
+    </test>
+	<test>
+	  <test_type>TST_PAP</test_type><!-- TODO LOINC -->
+	  <test_name>Papanicolaou</test_name>
+	  <time>2011-03-17</time><!-- ISO 8601 Dates -->
+	  <result>normal</result>
+	  <comments></comments>
+    </test>
+  </tests>
+</gine_tests>

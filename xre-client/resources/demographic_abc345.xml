@@ -1,0 +1,14 @@
+<person>
+  <id>abc345</id>
+  <name>
+	<given>Ana</given>
+	<given>Camila</given>
+	<lastname>Rodriguez</lastname>
+	<lastname>Zas</lastname>
+  </name>
+  <birthdate>19930621</birthdate>
+  <sex>
+	<name>Female</name>
+	<code>F</code>
+  </sex>
+</person>
